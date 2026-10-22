@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteShield — AI Digital Scam Protection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dark-theme">
+  <!-- Background Glow & Grid Overlay -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="logo-wrapper">
+          <img src="/assets/logo.jpg" alt="ByteShield Logo" class="nav-logo">
+        </div>
+        <div class="brand-text">
+          <span class="nav-title">BYTE<span class="brand-accent">SHIELD</span></span>
+          <span class="brand-sub">AI SCAM DEFENSE</span>
+        </div>
+      </a>
+
+      <div class="nav-status">
+        <span class="status-pulse"></span>
+        <span class="status-text">AI Shield Active</span>
+      </div>
+
+      <div class="nav-links hidden" id="navLinks">
+        <a href="/dashboard" class="nav-link" id="navDashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          Dashboard
+        </a>
+        <button class="btn btn-outline btn-sm" id="navLogout">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main App Wrapper -->
+  <main class="main-content">
+    <!-- Auth Section -->
+    <section class="auth-section" id="authSection">
+      <div class="auth-wrapper">
+        <div class="auth-hero">
+          <div class="auth-badge">
+            <span class="badge-icon">🛡️</span> AI-Powered Scam Protection
+          </div>
+          <h1 class="hero-title">Protect Yourself Against Digital Scams</h1>
+          <p class="hero-subtitle">Instantly analyze suspicious SMS, phishing links, payment screenshots, and QR codes using Google Gemini AI and real-time cybersecurity rules.</p>
+          <div class="hero-features">
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <span>Real-Time Phishing Detection</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔍</div>
+              <span>Multimodal Vision & QR Decoder</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🤖</div>
+              <span>Gemini 3.6 Flash AI Engine</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-card-container">
+          <div class="auth-card">
+            <!-- Login Form -->
+            <div class="auth-form-box" id="loginForm">
+              <div class="form-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your threat scanner & dashboard</p>
+              </div>
+              <form id="loginFormEl" class="auth-form">
+                <div class="form-group">
+                  <label for="loginUsername">Username</label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <input type="text" id="loginUsername" placeholder="Enter your username" required autocomplete="username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Password</label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full btn-glow">
+                  <span>Sign In</span>
+                  <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </form>
+              <div class="auth-footer">
+                <p>Don't have an account? <a href="#" id="showSignup">Create Account</a></p>
+              </div>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="auth-form-box hidden" id="signupForm">
+              <div class="form-header">
+                <h2>Create Account</h2>
+                <p>Register your ByteShield account for threat detection</p>
+              </div>
+              <form id="signupFormEl" class="auth-form">
+                <div class="form-group">
+                  <label for="signupUsername">Username</label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <input type="text" id="signupUsername" placeholder="Choose a username" required minlength="3" maxlength="30" autocomplete="username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="signupEmail">Email Address</label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <input type="email" id="signupEmail" placeholder="Enter your email" required autocomplete="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="signupPassword">Password</label>
+                  <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <input type="password" id="signupPassword" placeholder="Minimum 6 characters" required minlength="6" autocomplete="new-password">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full btn-glow">
+                  <span>Register Account</span>
+                  <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </form>
+              <div class="auth-footer">
+                <p>Already registered? <a href="#" id="showLogin">Sign In</a></p>
+              </div>
+            </div>
+
+            <div class="auth-message hidden" id="authMessage"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scanner Section (shown after login) -->
+    <section class="scanner-section hidden" id="scannerSection">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="scanner-hero">
+          <div class="hero-pill">
+            <span class="pill-dot"></span> Threat Intelligence Scanner
+          </div>
+          <h2 class="scanner-title">Analyze Potential Digital Threats</h2>
+          <p class="scanner-desc">Paste content or upload media below for real-time risk scoring, indicator extraction, and AI recommendations.</p>
+        </div>
+
+        <!-- Tab Controls -->
+        <div class="scanner-tabs">
+          <button class="tab-btn active" data-tab="message">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Message</span>
+          </button>
+          <button class="tab-btn" data-tab="link">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>Link / URL</span>
+          </button>
+          <button class="tab-btn" data-tab="screenshot">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Screenshot</span>
+          </button>
+          <button class="tab-btn" data-tab="qrcode">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>QR Code</span>
+          </button>
+        </div>
+
+        <!-- Scanner Card Container -->
+        <div class="scanner-card-wrapper">
+          <!-- Message Tab -->
+          <div class="tab-content active" id="messageTab">
+            <div class="scan-card">
+              <div class="card-header-icon">💬</div>
+              <h3>Message Phishing Scanner</h3>
+              <p class="card-hint">Paste SMS, WhatsApp messages, emails, or urgent requests below.</p>
+              <div class="textarea-wrapper">
+                <textarea id="messageInput" placeholder="Example: Your account will be suspended within 24 hours. Click here to verify your KYC..." rows="5"></textarea>
+                <div class="input-actions">
+                  <span class="hint-tag">AI Context Engine Ready</span>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-glow" id="scanMessageBtn">
+                <span class="btn-text">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Run Deep Scan
+                </span>
+                <span class="btn-loading hidden">
+                  <span class="spinner"></span> Analyzing Message...
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Link Tab -->
+          <div class="tab-content" id="linkTab">
+            <div class="scan-card">
+              <div class="card-header-icon">🔗</div>
+              <h3>URL & Domain Inspection</h3>
+              <p class="card-hint">Enter any web address, shortener, or link to inspect for domain impersonation & TLD anomalies.</p>
+              <div class="input-group-styled">
+                <span class="input-prefix">https://</span>
+                <input type="text" id="urlInput" placeholder="sbi-secure-verification.xyz/kyc-update" class="url-input">
+              </div>
+              <button class="btn btn-primary btn-glow" id="scanUrlBtn">
+                <span class="btn-text">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Inspect URL Risk
+                </span>
+                <span class="btn-loading hidden">
+                  <span class="spinner"></span> Inspecting Domain...
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screenshot Tab -->
+          <div class="tab-content" id="screenshotTab">
+            <div class="scan-card">
+              <div class="card-header-icon">📸</div>
+              <h3>Multimodal Screenshot Vision</h3>
+              <p class="card-hint">Upload payment confirmations, bank alerts, or suspicious chat screenshots for Gemini multimodal analysis.</p>
+              <div class="file-upload-area" id="screenshotUploadArea">
+                <div class="file-upload-content">
+                  <div class="upload-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <p class="upload-title">Click or drag image file here</p>
+                  <p class="upload-sub">Supports PNG, JPG, WEBP — Up to 5MB</p>
+                </div>
+                <input type="file" id="screenshotInput" accept="image/*" class="file-input-hidden">
+              </div>
+              <div class="file-preview hidden" id="screenshotPreview">
+                <div class="preview-img-container">
+                  <img id="screenshotPreviewImg" alt="Preview">
+                </div>
+                <button class="btn btn-sm btn-outline-danger" id="removeScreenshot">Remove Image</button>
+              </div>
+              <button class="btn btn-primary btn-glow" id="scanScreenshotBtn">
+                <span class="btn-text">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  Analyze Screenshot
+                </span>
+                <span class="btn-loading hidden">
+                  <span class="spinner"></span> Running Vision AI...
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- QR Code Tab -->
+          <div class="tab-content" id="qrcodeTab">
+            <div class="scan-card">
+              <div class="card-header-icon">📱</div>
+              <h3>QR Code Decoder & Payload Inspection</h3>
+              <p class="card-hint">Upload a QR code image to decode embedded URLs, payment payloads, or SMS links.</p>
+              <div class="file-upload-area" id="qrUploadArea">
+                <div class="file-upload-content">
+                  <div class="upload-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  </div>
+                  <p class="upload-title">Click or drag QR Code image here</p>
+                  <p class="upload-sub">Supports PNG, JPG, WEBP — Up to 5MB</p>
+                </div>
+                <input type="file" id="qrInput" accept="image/*" class="file-input-hidden">
+              </div>
+              <div class="file-preview hidden" id="qrPreview">
+                <div class="preview-img-container">
+                  <img id="qrPreviewImg" alt="Preview">
+                </div>
+                <button class="btn btn-sm btn-outline-danger" id="removeQr">Remove QR Image</button>
+              </div>
+              <button class="btn btn-primary btn-glow" id="scanQrBtn">
+                <span class="btn-text">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Decode & Analyze QR
+                </span>
+                <span class="btn-loading hidden">
+                  <span class="spinner"></span> Decoding Payload...
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Area -->
+        <div class="results-area hidden" id="resultsArea">
+          <div class="result-card" id="resultCard">
+            <!-- Header Bar -->
+            <div class="result-header">
+              <div class="result-title-group">
+                <span class="result-shield-icon">🛡️</span>
+                <div>
+                  <h3>Threat Assessment Report</h3>
+                  <span class="timestamp-tag">Analyzed Just Now</span>
+                </div>
+              </div>
+              <div class="risk-badge-wrapper">
+                <span class="risk-badge" id="riskBadge">—</span>
+              </div>
+            </div>
+
+            <!-- Risk Meter Bar -->
+            <div class="risk-meter-container">
+              <div class="risk-meter-track">
+                <div class="risk-meter-fill" id="riskMeterFill"></div>
+              </div>
+              <div class="risk-meter-labels">
+                <span>0 (Safe)</span>
+                <span>40 (Medium)</span>
+                <span>70 (High Risk)</span>
+                <span>100</span>
+              </div>
+            </div>
+
+            <!-- Result Body -->
+            <div class="result-body">
+              <!-- Metrics Grid -->
+              <div class="result-metrics">
+                <div class="metric-card">
+                  <div class="metric-icon-bg score-icon">📊</div>
+                  <div class="metric-info">
+                    <span class="metric-label">Risk Score</span>
+                    <span class="metric-value" id="riskScore">—</span>
+                  </div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-icon-bg conf-icon">🎯</div>
+                  <div class="metric-info">
+                    <span class="metric-label">Confidence</span>
+                    <span class="metric-value" id="confidence">—</span>
+                  </div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-icon-bg source-icon">⚡</div>
+                  <div class="metric-info">
+                    <span class="metric-label">Analysis Engine</span>
+                    <span class="metric-value" id="analysisSource">—</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Indicators Section -->
+              <div class="result-reasons">
+                <div class="section-title">
+                  <span class="title-icon">⚠️</span>
+                  <h4>Detected Scam & Risk Indicators</h4>
+                </div>
+                <ul id="reasonsList" class="reasons-grid"></ul>
+              </div>
+
+              <!-- Recommendation Banner -->
+              <div class="result-recommendation">
+                <div class="rec-header">
+                  <span class="rec-icon">💡</span>
+                  <h4>Security Recommendation</h4>
+                </div>
+                <p id="recommendation">—</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="/assets/logo.jpg" alt="ByteShield Logo" class="footer-logo">
+        <span>ByteShield</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 ByteShield — Stay Aware. Stay Safe.</p>
+    </div>
+  </footer>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/scanner.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

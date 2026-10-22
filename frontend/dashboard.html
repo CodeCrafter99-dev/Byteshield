@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — ByteShield Threat Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dark-theme">
+  <!-- Background Glow & Grid Overlay -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand">
+        <div class="logo-wrapper">
+          <img src="/assets/logo.jpg" alt="ByteShield Logo" class="nav-logo">
+        </div>
+        <div class="brand-text">
+          <span class="nav-title">BYTE<span class="brand-accent">SHIELD</span></span>
+          <span class="brand-sub">AI SCAM DEFENSE</span>
+        </div>
+      </a>
+
+      <div class="nav-status">
+        <span class="status-pulse"></span>
+        <span class="status-text">AI Shield Active</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Scanner
+        </a>
+        <button class="btn btn-outline btn-sm" id="navLogout">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Main Section -->
+  <main class="main-content">
+    <div class="dashboard-section">
+      <!-- Dashboard Hero Header -->
+      <div class="dashboard-header">
+        <div class="dash-hero-title">
+          <span class="dash-icon-badge">📊</span>
+          <div>
+            <h2>Threat Analytics Dashboard</h2>
+            <p>Real-time telemetry and isolation history for your account</p>
+          </div>
+        </div>
+        <div class="dash-action">
+          <a href="/" class="btn btn-primary btn-sm btn-glow">+ New Scan</a>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card total-card">
+          <div class="stat-card-header">
+            <span class="stat-icon">📋</span>
+            <span class="stat-label">Total Scans</span>
+          </div>
+          <span class="stat-number" id="totalScans">0</span>
+          <div class="stat-progress-bar"><div class="stat-bar-inner total-bar"></div></div>
+        </div>
+
+        <div class="stat-card high-card">
+          <div class="stat-card-header">
+            <span class="stat-icon">🚨</span>
+            <span class="stat-label">High Risk Identified</span>
+          </div>
+          <span class="stat-number" id="highRisk">0</span>
+          <div class="stat-progress-bar"><div class="stat-bar-inner high-bar"></div></div>
+        </div>
+
+        <div class="stat-card medium-card">
+          <div class="stat-card-header">
+            <span class="stat-icon">⚠️</span>
+            <span class="stat-label">Medium Risk Warnings</span>
+          </div>
+          <span class="stat-number" id="mediumRisk">0</span>
+          <div class="stat-progress-bar"><div class="stat-bar-inner med-bar"></div></div>
+        </div>
+
+        <div class="stat-card low-card">
+          <div class="stat-card-header">
+            <span class="stat-icon">✅</span>
+            <span class="stat-label">Low Risk / Verified</span>
+          </div>
+          <span class="stat-number" id="lowRisk">0</span>
+          <div class="stat-progress-bar"><div class="stat-bar-inner low-bar"></div></div>
+        </div>
+      </div>
+
+      <!-- Scan Type Breakdown Grid -->
+      <div class="dist-wrapper">
+        <h3 class="section-subheading">Scan Type Distribution</h3>
+        <div class="distribution-grid" id="distributionGrid">
+          <div class="dist-card">
+            <div class="dist-icon">💬</div>
+            <div class="dist-info">
+              <span class="dist-count" id="distMessage">0</span>
+              <span class="dist-label">Messages Scanned</span>
+            </div>
+          </div>
+
+          <div class="dist-card">
+            <div class="dist-icon">🔗</div>
+            <div class="dist-info">
+              <span class="dist-count" id="distUrl">0</span>
+              <span class="dist-label">URLs Inspected</span>
+            </div>
+          </div>
+
+          <div class="dist-card">
+            <div class="dist-icon">📸</div>
+            <div class="dist-info">
+              <span class="dist-count" id="distScreenshot">0</span>
+              <span class="dist-label">Screenshots Analyzed</span>
+            </div>
+          </div>
+
+          <div class="dist-card">
+            <div class="dist-icon">📱</div>
+            <div class="dist-info">
+              <span class="dist-count" id="distQr">0</span>
+              <span class="dist-label">QR Codes Decoded</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity Section -->
+      <div class="history-section">
+        <div class="table-card-header">
+          <span class="table-icon">⏱️</span>
+          <h3>Recent Scan Telemetry</h3>
+        </div>
+        <div id="recentScansContent" class="table-wrapper">
+          <p class="history-empty">Loading recent scans...</p>
+        </div>
+      </div>
+
+      <!-- Full History Section -->
+      <div class="history-section" style="margin-top: 32px;">
+        <div class="table-card-header">
+          <span class="table-icon">📜</span>
+          <h3>Complete Scan Log History</h3>
+        </div>
+        <div id="historyContent" class="table-wrapper">
+          <p class="history-empty">Loading history logs...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="/assets/logo.jpg" alt="ByteShield Logo" class="footer-logo">
+        <span>ByteShield</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 ByteShield — Stay Aware. Stay Safe.</p>
+    </div>
+  </footer>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/history.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const isLoggedIn = await Auth.checkSession();
+      if (!isLoggedIn) {
+        window.location.href = '/';
+        return;
+      }
+      History.loadDashboard();
+      History.loadHistory();
+      document.getElementById('navLogout')?.addEventListener('click', async () => {
+        await Auth.logout();
+        window.location.href = '/';
+      });
+    });
+  </script>
+</body>
+</html>

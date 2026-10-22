@@ -1,0 +1,28 @@
+{
+  "name": "byteshield",
+  "version": "1.0.0",
+  "description": "ByteShield — AI Digital Scam Protection",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "keywords": ["scam", "protection", "ai", "cybersecurity", "phishing"],
+  "author": "ByteShield Team",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "dotenv": "^16.5.0",
+    "bcryptjs": "^3.0.2",
+    "express-session": "^1.18.1",
+    "@google/genai": "^1.1.0",
+    "multer": "^2.0.1",
+    "jsqr": "^1.4.0",
+    "jimp": "^1.6.0",
+    "helmet": "^8.1.0",
+    "express-rate-limit": "^7.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
